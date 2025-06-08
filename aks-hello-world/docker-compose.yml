@@ -1,0 +1,12 @@
+services:
+  app:
+    image: "mcr.microsoft.com/azuredocs/aks-helloworld:v1"
+    container_name: "aks-hello-world"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`aks-hello-world.studgart.com`)"
+      - "traefik.http.routers.app.entrypoints=web"
+networks:
+  default:
+    name: app
+    external: true
